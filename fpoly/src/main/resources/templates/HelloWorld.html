@@ -9,9 +9,19 @@
 
 <body>
     <h1 th:text="${content}">Hello World</h1>
+
+    <!-- Hiển thị thông báo kết quả đăng nhập -->
     <h3 th:text="${message}"></h3>
+
+    <!-- Hiển thị tên đăng nhập và mật khẩu đã nhập vào -->
     <p th:text="${'Tên đăng nhập: ' + username}"></p>
     <p th:text="${'Mật khẩu: ' + password}"></p>
+
+    <!-- Hiển thị file nếu có URL -->
+    <div th:if="${fileUrl != null}">
+        <p>Uploaded File:</p>
+        <img th:src="${fileUrl}" alt="Uploaded Image" style="max-width: 300px;" />
+    </div>
 </body>
 
 </html>

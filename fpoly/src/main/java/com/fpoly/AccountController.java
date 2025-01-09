@@ -1,7 +1,10 @@
 package com.fpoly;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,8 +50,27 @@ public class AccountController {
     }
 
     @PostMapping("upload")
-    public String postMethodName(@RequestPart("photo_file") MultipartFile file) {
-        return "upload/image";
+    public String uploadFile(@RequestPart("photo_file") MultipartFile photoFile, Model model) {
+        if (!photoFile.isEmpty()) {
+            String dir = servletContext.getRealPath("/photos");
+            File uploadDir = new File(dir);
+            String filename = photoFile.getOriginalFilename();
+
+            // Tạo thư mục nếu chưa tồn tại
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+
+            try {
+                photoFile.transferTo(new File(dir, filename));
+                String fileUrl = "/photos/" + filename;
+                model.addAttribute("fileUrl", fileUrl);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return "HelloWorld";
     }
 
 }
