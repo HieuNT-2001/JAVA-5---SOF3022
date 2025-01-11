@@ -1,6 +1,7 @@
 package com.fpoly;
 
 import java.io.File;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,20 +51,37 @@ public class AccountController {
     }
 
     @PostMapping("upload")
-    public String uploadFile(@RequestPart("photo_file") MultipartFile photoFile, Model model) {
-        if (!photoFile.isEmpty()) {
-            String dir = servletContext.getRealPath("/photos");
-            File uploadDir = new File(dir);
-            String filename = photoFile.getOriginalFilename();
-
-            // Tạo thư mục nếu chưa tồn tại
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs();
-            }
-
+    public String uploadFile(@RequestPart("photo_file") MultipartFile file, Model model) {
+        if (!file.isEmpty()) {
             try {
-                photoFile.transferTo(new File(dir, filename));
-                String fileUrl = "/photos/" + filename;
+                // Tên thư mục lưu ảnh
+                String dir = System.getProperty("user.dir") + "/photos";
+                // String dir = servletContext.getRealPath("/photos");
+
+                // Tạo một đối tượng ảnh file cho thư mục lưu ảnh
+                File uploadDir = new File(dir);
+
+                // Tạo thư mục nếu chưa tồn tại
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdirs();
+                }
+
+                // Lấy tên gốc của tệp
+                String originFilename = file.getOriginalFilename();
+
+                // Tạo tên ảnh duy nhất
+                String safeFileName = UUID.randomUUID().toString() + "_" + originFilename;
+
+                // Đường dẫn tệp đích trên hệ thống
+                File destination = new File(dir, safeFileName);
+
+                // Lưu tệp
+                file.transferTo(destination);
+
+                // URL truy cập tệp qua trình duyệt
+                String fileUrl = System.getProperty("user.dir") + "/photos/" + safeFileName;
+
+                // Gửi URL tới model để hiển thị trong view
                 model.addAttribute("fileUrl", fileUrl);
             } catch (Exception e) {
                 e.printStackTrace();
