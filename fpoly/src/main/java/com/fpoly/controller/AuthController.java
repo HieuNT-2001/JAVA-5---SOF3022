@@ -1,4 +1,4 @@
-package com.fpoly;
+package com.fpoly.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

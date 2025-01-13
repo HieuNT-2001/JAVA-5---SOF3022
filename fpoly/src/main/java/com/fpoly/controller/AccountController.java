@@ -1,4 +1,4 @@
-package com.fpoly;
+package com.fpoly.controller;
 
 import java.io.File;
 import java.util.UUID;
@@ -55,7 +55,7 @@ public class AccountController {
         if (!file.isEmpty()) {
             try {
                 // Tên thư mục lưu ảnh
-                String dir = System.getProperty("user.dir") + "/src/main/resources/static/photos";
+                String dir = System.getProperty("user.dir") + "/photos";
                 // String dir = servletContext.getRealPath("/photos");
 
                 // Tạo một đối tượng ảnh file cho thư mục lưu ảnh
