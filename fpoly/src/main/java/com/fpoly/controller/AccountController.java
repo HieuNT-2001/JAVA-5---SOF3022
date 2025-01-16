@@ -1,4 +1,4 @@
-package com.fpoly;
+package com.fpoly.controller;
 
 import java.io.File;
 import java.util.UUID;
@@ -79,7 +79,7 @@ public class AccountController {
                 file.transferTo(destination);
 
                 // URL truy cập tệp qua trình duyệt
-                String fileUrl = System.getProperty("user.dir") + "/photos/" + safeFileName;
+                String fileUrl = "/photos/" + safeFileName;
 
                 // Gửi URL tới model để hiển thị trong view
                 model.addAttribute("fileUrl", fileUrl);
