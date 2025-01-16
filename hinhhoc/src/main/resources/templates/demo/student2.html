@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns=http://www.thymeleaf.org>
+
+<head>
+    <title> Thông Tin Sinh Viên </title>
+</head>
+
+<body>
+    <h3> Thông tin Sinh Viên </h3>
+    <ul>
+        <li th:text="${'Họ và tên: ' + student.fullname}"></li>
+        <li th:text="${'Điểm: ' + student.mark}"></li>
+        <li th:text="${'Giới tính: ' + (student.gender ? 'Nam' : 'Nữ')}"></li>
+        <li th:text="${'Ngày sinh: ' + student.birthday}"></li>
+        <li th:text="${'Ảnh: ' + student.photo}"></li>
+    </ul>
+</body>
+
+</html>
