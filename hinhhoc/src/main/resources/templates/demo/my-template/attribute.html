@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>HTML Attributes</h4>
+    <a th:href="@{|/images/${photo}|}">
+        <img th:src="@{|/images/${photo}|}">
+    </a>
+    <h4>Create, Append, Prepend Attributes</h4>
+    <ul>
+        <li title="${photo}"></li>
+        <li th:attr="title=${photo}"></li>
+        <li title=" Nghiệm" th:attrprepend="title=${ho}"></li>
+        <li title="Nguyễn " th:attrappend="title=${ten}"></li>
+    </ul>
+    <h4>Append, Prepend Classes</h4>
+    <ul>
+        <li class="btn " th:attrappend="class=${myclass}"></li>
+        <li class="btn" th:classappend="${myclass}"></li>
+    </ul>
+</body>
+
+</html>

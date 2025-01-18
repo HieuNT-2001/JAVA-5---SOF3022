@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>HTML Encoded Data</h4>
+    <ul>
+        <li th:text="${var}"></li>
+        <li>Inline: [[${var}]]</li>
+    </ul>
+    <h4>HTML Raw Data</h4>
+    <ul>
+        <li th:utext="${var}"></li>
+        <li>Inline: [(${var})]</li>
+    </ul>
+</body>
+
+</html>

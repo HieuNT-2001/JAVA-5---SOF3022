@@ -12,7 +12,9 @@
         <li th:text="${'Điểm: ' + student.mark}"></li>
         <li th:text="${'Giới tính: ' + (student.gender ? 'Nam' : 'Nữ')}"></li>
         <li th:text="${'Ngày sinh: ' + student.birthday}"></li>
-        <li th:text="${'Ảnh: ' + student.photo}"></li>
+        <li>
+            <img th:src="@{|/images/${student.photo}|}" alt="photo">
+        </li>
     </ul>
 </body>
 

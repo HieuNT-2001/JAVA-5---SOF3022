@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>Student Info</h4>
+    <ul th:object="${student}">
+        <li th:text="*{fullname}"></li>
+        <li th:text="*{mark}"></li>
+    </ul>
+    <ul th:with="name=${student.fullname}, mark=${student.mark}">
+        <li th:text="${name}"></li>
+        <li th:text="${mark}"></li>
+    </ul>
+
+    <th:block th:if="${student.mark >= 9.5}">
+        Congratulations! You are an <b>FPT Polytechnic Golden Bea!</b>
+    </th:block>
+
+    <div th:if="${student.mark >= 9.5}">
+        Congratulations! You are an <b>FPT Polytechnic Golden Bea!</b>
+    </div>
+</body>
+
+</html>
