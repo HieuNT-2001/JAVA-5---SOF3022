@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
-@RequestMapping("home")
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home() {
-        return "home/Master";
+        return "/home/Master";
     }
 
     @GetMapping("/equation")
     public String showEquation() {
-        return "home/Equation";
+        return "/home/Equation";
     }
 
     @PostMapping("/equation")
@@ -42,12 +41,12 @@ public class HomeController {
         } else {
             model.addAttribute("result", "Không có nghiệm thực.");
         }
-        return "home/Equation";
+        return "/home/Equation";
     }
 
     @GetMapping("/exchange")
     public String showExchangeForm() {
-        return "home/Exchange";
+        return "/home/Exchange";
     }
 
     @PostMapping("/exchange")
@@ -56,12 +55,12 @@ public class HomeController {
         double rate = Double.parseDouble(request.getParameter("curruency"));
         double result = amount / rate;
         model.addAttribute("result", result);
-        return "home/Exchange";
+        return "/home/Exchange";
     }
 
     @GetMapping("/leapyear")
     public String showLeapYearForm() {
-        return "home/LeapYear";
+        return "/home/LeapYear";
     }
 
     @PostMapping("/leapyear")
@@ -77,7 +76,7 @@ public class HomeController {
         }
         model.addAttribute("year", year);
         model.addAttribute("result", isLeapYear);
-        return "home/LeapYear";
+        return "/home/LeapYear";
     }
 
 }
