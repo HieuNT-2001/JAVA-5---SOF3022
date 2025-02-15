@@ -1,0 +1,28 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+  <h2>Friend List</h2>
+  <a class="btn btn-primary mb-3" th:href="@{/friends/new}">Create New Friend</a>
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="friend : ${friends}">
+        <td th:text="${friend.id}">ID</td>
+        <td th:text="${friend.ma}">ma</td>
+        <td th:text="${friend.ten}">ten</td>
+        <!-- <td th:text="${friend.gioiTinh}">gioiTinh</td> -->
+        <!-- <td th:text="${friend.soThich}">soThich</td> -->
+        <td>
+          <a class="btn btn-warning btn-sm" th:href="@{'/friends/edit/' + ${friend.id}}">Edit</a>
+          <a class="btn btn-danger btn-sm" th:href="@{'/friends/delete/' + ${friend.id}}"
+            onclick="return confirm('Bạn chắc chắn chứ?');">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
