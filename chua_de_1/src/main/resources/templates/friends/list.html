@@ -5,18 +5,20 @@
     <thead class="table-light">
       <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
+        <th>Mã</th>
+        <th>Tên</th>
+        <th>Sở thích</th>
+        <th>Giới tính</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="friend : ${friends}">
         <td th:text="${friend.id}">ID</td>
-        <td th:text="${friend.ma}">ma</td>
-        <td th:text="${friend.ten}">ten</td>
-        <!-- <td th:text="${friend.gioiTinh}">gioiTinh</td> -->
-        <!-- <td th:text="${friend.soThich}">soThich</td> -->
+        <td th:text="${friend.code}">ma</td>
+        <td th:text="${friend.name}">ten</td>
+        <td th:text="${friend.favorite}">soThich</td>
+        <td th:text="${friend.gender == 1 ? 'Nam' : 'Nữ'}">gioiTinh</td>
         <td>
           <a class="btn btn-warning btn-sm" th:href="@{'/friends/edit/' + ${friend.id}}">Edit</a>
           <a class="btn btn-danger btn-sm" th:href="@{'/friends/delete/' + ${friend.id}}"

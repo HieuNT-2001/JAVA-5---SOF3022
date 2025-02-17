@@ -25,24 +25,24 @@ public class Friend {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "Ma")
-    private String ma;
+    @Column(name = "ma")
+    private String code;
 
-    @Column(name = "Ten")
-    private String ten;
+    @Column(name = "ten")
+    private String name;
 
-    // @Column(name = "NgaySinh")
+    @Column(name = "so_thich")
+    private String favorite;
+
+    @Column(name = "gioi_tinh")
+    private Integer gender = 1;
+
+    // @Column(name = "ngay_sinh")
     // private LocalDate ngaySinh;
-
-    // @Column(name = "SoThich")
-    // private String soThich;
-
-    // @Column(name = "GioiTinh")
-    // private Integer gioiTinh;
 
     // @Column(name = "IdMQH")
     // private Integer idMQH;
 
-    // @Column(name = "TrangThai")
+    // @Column(name = "trang_thai")
     // private Integer trangThai;
 }

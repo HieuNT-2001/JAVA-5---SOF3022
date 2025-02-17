@@ -1,15 +1,37 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
-  <h2>Create New Product</h2>
-  <form th:action="@{/products}" th:object="${product}" method="post">
+  <h2>Create New Friend</h2>
+  <form th:action="@{/friends/create}" th:object="${friend}" method="post">
+
+    <div class="mb-3">
+      <label for="code" class="form-label">Code:</label>
+      <input type="text" id="code" th:field="*{code}" class="form-control" step="0.01" placeholder="Enter friend code"
+        required />
+    </div>
+
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>
-      <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter product name" required />
+      <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter friend name" required />
     </div>
+
     <div class="mb-3">
-      <label for="price" class="form-label">Price:</label>
-      <input type="number" id="price" th:field="*{price}" class="form-control" step="0.01" placeholder="Enter product price" required />
+      <label for="favorite" class="form-label">Favorite:</label>
+      <input type="text" id="favorite" th:field="*{favorite}" class="form-control" step="0.01"
+        placeholder="Enter friend favorite" required />
     </div>
+
+    <div class="mb-3">
+      <label for="gender" class="form-label">Gender:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="gender1" th:field="*{gender}" th:value="1">
+        <label class="form-check-label" for="gender1">Nam</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="gender2" th:field="*{gender}" th:value="0">
+        <label class="form-check-label" for="gender2">Nữ</label>
+      </div>
+    </div>
+
     <button type="submit" class="btn btn-success">Save</button>
-    <a class="btn btn-secondary" th:href="@{/products}">Cancel</a>
+    <a class="btn btn-secondary" th:href="@{/friends}">Cancel</a>
   </form>
 </div>
