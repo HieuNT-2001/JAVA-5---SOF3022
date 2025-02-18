@@ -30,9 +30,10 @@ public class FriendController {
     public String listFriends(Model model) {
         List<Friend> friends = friendService.getAllFriends();
         System.out.println(friends);
+        model.addAttribute("friend", new Friend());
         model.addAttribute("friends", friends);
         model.addAttribute("title", "Friend list");
-        model.addAttribute("content", "friends/list");
+        model.addAttribute("content", "friends/home");
         return "layout/base";
     }
 
