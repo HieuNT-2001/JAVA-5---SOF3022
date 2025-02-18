@@ -1,0 +1,52 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+	<div class="center">
+		<h2>Quản lý bạn bè</h2>
+	</div>
+	<form>
+		<div class="row">
+			<div class="col-6">
+				<label>Mã</label>
+				<input type="text">
+			</div>
+			<div class="col-6">
+				<label>Sở thích</label>
+				<input type="text">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label>Tên</label>
+				<input type="text">
+			</div>
+			<div class="col-6">
+				<label>Giới tính</label>
+				<input checked type="radio" value="Nam">
+				<input type="radio" value="Nữ">
+			</div>
+		</div>
+		<div class="center">
+			<button type="submit">Add</button>
+		</div>
+	</form>
+	<table class="table mt-4">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Mã</th>
+				<th scope="col">Tên</th>
+				<th scope="col">Sở thích</th>
+				<th scope="col">Giới tính</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="friend : ${friends}">
+				<th scope="row" th:text="${friend.id}"></th>
+				<td th:text="${friend.code}"></td>
+				<td th:text="${friend.name}"></td>
+				<td th:text="${friend.favorite}"></td>
+				<td th:text="${friend.gender == 1 ? 'Nam' : 'Nữ'}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
