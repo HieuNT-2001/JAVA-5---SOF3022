@@ -1,0 +1,55 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+	<div class="center">
+		<h2>Quản lý sách</h2>
+	</div>
+	<form th:action="@{/books/create}" th:object="${book}" method="post">
+		<div class="row">
+			<div class="col-6">
+				<label>Mã:</label>
+				<input class="form-control" type="text" th:field="*{code}">
+			</div>
+			<div class="col-6">
+				<label>Số trang:</label>
+				<input class="form-control" type="number" th:field="*{pages}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label>Tên:</label>
+				<input class="form-control" type="text" th:field="*{name}">
+			</div>
+			<div class="col-6">
+				<label>Đơn giá:</label>
+				<input class="form-control" type="number" th:field="*{price}">
+			</div>
+		</div>
+		<div class="center">
+			<button type="submit" class="btn btn-success">Add</button>
+		</div>
+	</form>
+	<table class="table mt-4" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Mã</th>
+				<th scope="col">Tên</th>
+				<th scope="col">Số trang</th>
+				<th scope="col">Đơn giá</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="book : ${books}">
+				<th scope="row" th:text="${book.id}"></th>
+				<td th:text="${book.code}"></td>
+				<td th:text="${book.name}"></td>
+				<td th:text="${book.pages}"></td>
+				<td th:text="${book.price}"></td>
+				<td>
+					<a class="btn btn-danger btn-sm" th:href="@{'books/delete/' + ${book.id}}"
+						onclick="return confirm('Bạn chắc chắn chứ?')">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

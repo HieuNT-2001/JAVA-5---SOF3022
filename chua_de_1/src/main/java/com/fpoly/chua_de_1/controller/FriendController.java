@@ -71,7 +71,7 @@ public class FriendController {
     }
 
     // Xóa bạn bè
-    @GetMapping("delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteFriend(@PathVariable("id") int id) {
         friendService.deleteFriend(id);
         return "redirect:/friends";
