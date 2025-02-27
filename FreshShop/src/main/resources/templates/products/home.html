@@ -1,0 +1,66 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="content">
+	<div class="container mt-5">
+		<div class="text-center mb-4">
+			<h2>Quản lý xe máy</h2>
+		</div>
+		<form th:action="@{/xe}" th:object="${newXe}" method="post">
+			<div class="row mb-3">
+				<div class="col-md-6">
+					<label class="form-label">Mã:</label>
+					<input type="text" th:field="*{ma}" class="form-control" placeholder="Nhập mã" required />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label">Số lượng:</label>
+					<input type="number" th:field="*{soLuong}" class="form-control"
+						placeholder="Nhập số lượng" required />
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-6">
+					<label class="form-label">Tên:</label>
+					<input type="text" th:field="*{ten}" class="form-control" placeholder="Nhập tên"
+						required />
+				</div>
+				<div class="col-md-6">
+					<label class="form-label">Trạng thái:</label>
+					<div>
+						<input type="radio" th:field="*{trangThai}" value="1" />
+						<label class="form-check-label me-3">Mới</label>
+						<input type="radio" th:field="*{trangThai}" value="0" />
+						<label class="form-check-label">Cũ</label>
+					</div>
+				</div>
+			</div>
+			<div class="text-center mb-4">
+				<button type="submit" class="btn btn-primary">Add</button>
+			</div>
+		</form>
+		<table id="xeTable" class="table mt-4">
+			<thead>
+				<tr>
+					<th scope="col">STT</th>
+					<th scope="col">Mã</th>
+					<th scope="col">Tên</th>
+					<th scope="col">Số lượng</th>
+					<th scope="col">Mô tả</th>
+					<th scope="col">Hành động</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="l : ${list}">
+					<td th:text="${l.id}"></td>
+					<td th:text="${l.ma}"></td>
+					<td th:text="${l.ten}"></td>
+					<td th:text="${l.soLuong}"></td>
+					<td th:text="${l.trangThai == 1 ? 'Mới' : 'Cũ'} "></td>
+					<td>
+						<form th:action="@{/xe/delete/{id}(id=${l.id})}" method="post"
+							onsubmit="return confirm('Bạn chắc chắn muốn xóa bản ghi này không?');">
+							<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

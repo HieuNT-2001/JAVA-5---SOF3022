@@ -2,11 +2,11 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot-FreshshopApplication<Freshshop>",
+            "name": "Spring Boot-FreshShopApplication<FreshShop>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "com.fpoly.FreshshopApplication",
-            "projectName": "Freshshop",
+            "mainClass": "com.fpoly.FreshShopApplication",
+            "projectName": "FreshShop",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
